@@ -1,0 +1,138 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body styling */
+body {
+    background: url('banana-pattern.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+/* Background overlay for transparency effect */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust transparency here */
+    z-index: 0;
+}
+
+/* Centering the container */
+.register-container {  /* Renamed to register-container */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Title styling */
+.register-title {  /* Renamed to register-title */
+    font-size: 5rem;
+    font-family: "Londrina Sketch", sans-serif;
+    color: #fbd500; /* Main text color */
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 
+        -1px -1px 0 #000, /* Top left shadow */
+         1px -1px 0 #000, /* Top right shadow */
+        -1px  1px 0 #000, /* Bottom left shadow */
+         1px  1px 0 #000; /* Bottom right shadow */
+}
+
+/* Register box styling */
+.register-box {  /* Renamed to register-box */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #777;
+}
+
+/* Input group styling */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group img {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/* Input fields styling */
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+/* Button container styling */
+.button-container {
+    margin-top: 20px;
+}
+
+/* Button styling */
+.submit-btn, .register-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Specific styles for the submit button */
+.submit-btn {
+    background-color: #FFD700;
+    color: #000;
+}
+
+.submit-btn:hover {
+    background-color: #FFC107;
+}
+
+/* Specific styles for the register button */
+.register-btn {
+    background-color: #FFD700;
+    color: #000;
+}
+
+.register-btn:hover {
+    background-color: #FFC107;
+}

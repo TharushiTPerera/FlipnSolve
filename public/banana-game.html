@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="GENERATOR" content="A plain text editor">
+    <meta name="Author" content="Marc Conrad">
+    <meta name="Description" content="Banana Game Demo">
+    <title>The Banana Game</title>
+    <style>
+        h1 {
+            color: blue;
+        }
+        .button-62 {
+            background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+            border: 0;
+            border-radius: 12px;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 2.5;
+            outline: transparent;
+            padding: 0 1rem;
+            text-align: center;
+            text-decoration: none;
+            transition: box-shadow .2s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+        }
+        .h2-62 {
+            line-height: 2.5;
+        }
+        .button-62:not([disabled]):focus {
+            box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+        }
+        .button-62:not([disabled]):hover {
+            box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+        }
+    </style>
+    <script>
+        var quest = "";
+        var solution = -1;
+    
+        let newgame = function(x) {
+            startup();
+        }
+    
+        let handleInput = function() {
+            let inp = document.getElementById("input");
+            var note = document.getElementById("note");
+            if (parseInt(inp.value) === solution) {
+                note.innerHTML = 'Correct! - Returning to Game...';
+                localStorage.setItem('bananaGameResult', 'success'); // Store success in localStorage
+                setTimeout(() => {
+                    window.location.href = "/home"; // Redirect to your main game or home page
+                }, 2000); // Delay of 2 seconds before redirect
+            } else {
+                note.innerHTML = "Not Correct!";
+            }
+        }
+    
+        let startQuest = function(data) {
+            var parsed = JSON.parse(data);
+            quest = parsed.question;
+            solution = parsed.solution;
+            let img = document.getElementById("quest");
+            img.src = quest;
+            let note = document.getElementById("note");
+            note.innerHTML = "Quest is ready.";
+        }
+    
+        let fetchText = async function() {
+            let response = await fetch('https://marcconrad.com/uob/banana/api.php');
+            let data = await response.text();
+            startQuest(data);
+        }
+    
+        let startup = function() {
+            fetchText();
+        }
+    </script>
+    
+</head>
+
+<body onload="startup()">
+    <h1>The Banana Game</h1>
+    <img id="quest" />
+    <div>
+        <h2 class="h2-62" id="note">[Wait for first game]</h2>
+        <h2>Enter the missing digit: <input class="button-62" id="input" onchange="handleInput()" type="number" step="1" min="0" max="9"></h2>
+    </div>
+    <p>
+        <hr>
+        <small>
+            &copy; by <a href="https://marcconrad.com/marc-conrad/index.php?n=12&s=mc">Marc Conrad</a> 2023.
+            The material on this page is presented "as is". There is no warranty implied. This application may be discontinued without notice
+            and must not be used for commercial applications. There is also an <a href="doc.php">API</a> available.
+            Use <a href="https://sanfoh.com/six/sym.php?icon=banana&smile=1" target="_new" >this link<a> to download up to 1000 games. 
+            For any comments or suggestions
+            <a href="http://marcconrad.com/consultancy/">contact Marc Conrad</a>. <em>Last update:</em> June 2024.
+        </small>
+    </p>
+</body>
+</html>

@@ -1,0 +1,103 @@
+.game-container {
+    text-align: center;
+    margin: 20px;
+    position: relative;
+    padding-top: 60px; /* Padding at the top to avoid overlap with timer and hearts */
+}
+
+.timer {
+    font-size: 1.5rem;
+    position: fixed;
+    top: 20px;
+    left: 60px; /* Timer on the left */
+    z-index: 2;
+    padding: 5px 15px; /* Add padding for better spacing inside the border */
+    border: 2px solid #FFD700; /* Yellow border */
+    border-radius: 50px; /* Rounded corners for the border */
+    background-color: #fff; /* Ensure it has a white background to contrast the border */
+}
+
+.hearts {
+    font-size: 1.5rem;
+    position: fixed;
+    top: 20px;
+    right: 60px; /* Hearts on the right */
+    z-index: 2;
+    padding: 5px 15px; /* Add padding for better spacing inside the border */
+    border: 2px solid #FFD700; /* Yellow border */
+    border-radius: 50px; /* Rounded corners for the border */
+    background-color: #fff; /* Ensure it has a white background to contrast the border */
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 120px); /* Increase column size to 120px */
+    grid-template-rows: repeat(3, 120px);    /* Increase row size to 120px */
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 80px; /* Ensure grid starts below the timer and hearts */
+}
+
+.card {
+    width: 120px;    /* Increased card width */
+    height: 120px;   /* Increased card height */
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    background-color: transparent;
+}
+
+.card.flipped {
+    transform: rotateY(180deg); /* Flip the card on the Y-axis */
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background-color: #ccc; /* Front color of the card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #333;
+    border-radius: 10px;
+}
+
+.card-back {
+    background-color: #f0f0f0; /* Back color of the card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transform: rotateY(180deg); /* Initially rotated */
+}
+
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fits inside the card */
+}
+
+.game-over {
+    font-size: 2rem;
+    color: red;
+    margin-top: 20px;
+}
+
+.restart-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: #FFD700;
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
